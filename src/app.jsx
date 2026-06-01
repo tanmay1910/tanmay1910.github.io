@@ -7,7 +7,8 @@ const LS = {
 };
 
 function App() {
-  const [view, setView] = useState({ name: 'home', params: {} });
+  const [view, setView] = useState(() => (window.location.hash === '#admin' ? { name: 'admin', params: {} } : { name: 'home', params: {} }));
+  const [, setRev] = useState(0);
   const [cart, setCart] = useState(() => LS.get('cart', []));
   const [wishlist, setWishlist] = useState(() => LS.get('wish', []));
   const [user, setUser] = useState(() => LS.get('user', null));
@@ -18,6 +19,14 @@ function App() {
   const [couponMsg, setCouponMsg] = useState(null);
   const [appliedCoupon, setAppliedCoupon] = useState(null);
   const [toastMsg, setToastMsg] = useState(null);
+
+  // expose a global re-render hook so the Supabase loader / admin can refresh the catalog
+  useEffect(() => {
+    window.__pzRefresh = () => setRev(r => r + 1);
+    const onHash = () => { if (window.location.hash === '#admin') setView({ name: 'admin', params: {} }); };
+    window.addEventListener('hashchange', onHash);
+    return () => { window.removeEventListener('hashchange', onHash); delete window.__pzRefresh; };
+  }, []);
 
   useEffect(() => LS.set('cart', cart), [cart]);
   useEffect(() => LS.set('wish', wishlist), [wishlist]);
@@ -104,6 +113,7 @@ function App() {
     home: window.HomePage, listing: () => <window.ShopPage mode="listing" />, search: () => <window.ShopPage mode="search" />,
     product: window.ProductPage, cart: window.CartPageWrapped, checkout: window.CheckoutPage, confirm: window.ConfirmPage,
     auth: window.AuthPage, wishlist: window.WishlistPage, account: window.AccountPage,
+    admin: window.AdminPage, contact: window.ContactPage, about: window.AboutPage,
   };
   const Page = pages[view.name] || window.HomePage;
 
