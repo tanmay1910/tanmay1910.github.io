@@ -1,0 +1,128 @@
+/* ============================================================
+   PRINTZIN — Gifting Solution
+   Design system: warm, festive, celebratory. Coral + amber.
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,500&display=swap');
+
+:root {
+  /* Brand */
+  --coral: #FF5A36;
+  --coral-deep: #E03E18;
+  --coral-soft: #FF7A57;
+  --amber: #FFB020;
+  --amber-deep: #F59300;
+  --pink: #FF3D77;
+  --berry: #C2185B;
+
+  /* Neutrals (warm) */
+  --ink: #2A1410;
+  --ink-2: #4A302A;
+  --muted: #8A6F63;
+  --muted-2: #B49C90;
+  --line: #F1DDD0;
+  --line-2: #E7CDBC;
+  --cream: #FFF9F4;
+  --peach: #FFEFE5;
+  --peach-2: #FFE2D2;
+  --white: #FFFFFF;
+
+  /* Status */
+  --green: #1F9D5B;
+  --green-soft: #E6F6EC;
+  --star: #FFB020;
+
+  /* Radii */
+  --r-sm: 8px;
+  --r-md: 14px;
+  --r-lg: 22px;
+  --r-xl: 32px;
+  --r-pill: 999px;
+
+  /* Shadow */
+  --sh-sm: 0 2px 8px rgba(80,30,15,0.06);
+  --sh-md: 0 8px 24px rgba(120,45,20,0.10);
+  --sh-lg: 0 18px 50px rgba(120,45,20,0.16);
+  --sh-coral: 0 10px 28px rgba(255,90,54,0.32);
+
+  --maxw: 1280px;
+  --header-h: 132px;
+
+  --font-display: 'Bricolage Grotesque', system-ui, sans-serif;
+  --font-body: 'Plus Jakarta Sans', system-ui, sans-serif;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  font-family: var(--font-body);
+  background: var(--cream);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+img { max-width: 100%; display: block; }
+button { font-family: inherit; cursor: pointer; border: none; background: none; }
+input, textarea, select { font-family: inherit; }
+a { color: inherit; text-decoration: none; }
+h1,h2,h3,h4,h5 { font-family: var(--font-display); margin: 0; line-height: 1.04; letter-spacing: -0.02em; font-weight: 700; }
+p { margin: 0; }
+::selection { background: var(--coral); color: #fff; }
+
+.wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 28px; }
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 9px;
+  font-family: var(--font-body); font-weight: 700; font-size: 15px;
+  padding: 13px 24px; border-radius: var(--r-pill);
+  transition: transform .15s ease, box-shadow .2s ease, background .2s ease, color .2s;
+  white-space: nowrap; line-height: 1;
+}
+.btn:active { transform: translateY(1px) scale(.99); }
+.btn-primary { background: var(--coral); color: #fff; box-shadow: var(--sh-coral); }
+.btn-primary:hover { background: var(--coral-deep); box-shadow: 0 14px 34px rgba(224,62,24,.4); }
+.btn-dark { background: var(--ink); color: #fff; }
+.btn-dark:hover { background: #3d201a; }
+.btn-ghost { background: var(--white); color: var(--ink); box-shadow: var(--sh-sm); border: 1.5px solid var(--line-2); }
+.btn-ghost:hover { border-color: var(--coral); color: var(--coral); }
+.btn-amber { background: var(--amber); color: var(--ink); }
+.btn-amber:hover { background: var(--amber-deep); }
+.btn-lg { padding: 17px 34px; font-size: 16.5px; }
+.btn-sm { padding: 9px 16px; font-size: 13.5px; }
+.btn-block { width: 100%; }
+.btn[disabled] { opacity: .45; cursor: not-allowed; }
+
+/* ---------- Chips / badges ---------- */
+.chip {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 7px 14px; border-radius: var(--r-pill);
+  font-size: 13px; font-weight: 600; background: var(--peach); color: var(--ink-2);
+  border: 1.5px solid transparent; cursor: pointer; transition: all .15s;
+}
+.chip:hover { border-color: var(--line-2); }
+.chip.active { background: var(--ink); color: #fff; }
+.badge {
+  display: inline-flex; align-items: center; gap: 5px;
+  font-size: 11.5px; font-weight: 800; letter-spacing: .03em; text-transform: uppercase;
+  padding: 5px 10px; border-radius: var(--r-sm); color: #fff;
+}
+.badge-coral { background: var(--coral); }
+.badge-amber { background: var(--amber); color: var(--ink); }
+.badge-pink { background: var(--pink); }
+.badge-green { background: var(--green); }
+.badge-soft { background: var(--peach-2); color: var(--coral-deep); }
+
+.eyebrow {
+  font-family: var(--font-body); font-weight: 800; font-size: 12.5px;
+  letter-spacing: .16em; text-transform: uppercase; color: var(--coral);
+}
+
+/* scrollbar tidy */
+.no-sb::-webkit-scrollbar { display: none; }
+.no-sb { scrollbar-width: none; }
+
+/* fade-in util */
+@keyframes pzFade { from { opacity: 0; transform: translateY(10px);} to {opacity:1; transform:none;} }
+.fade-in { animation: pzFade .4s ease both; }
+@keyframes pzPop { 0%{transform:scale(.96);opacity:0} 100%{transform:scale(1);opacity:1} }
