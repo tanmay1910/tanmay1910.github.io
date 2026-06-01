@@ -4,9 +4,11 @@
 .pz-header { position: sticky; top: 0; z-index: 50; background: var(--white); box-shadow: var(--sh-sm); }
 .pz-topstrip { background: var(--ink); color: #FFE7DC; font-size: 12.5px; font-weight: 600; }
 .pz-topstrip-in { display: flex; align-items: center; justify-content: space-between; height: 36px; }
-.pz-topstrip-in span { display: inline-flex; align-items: center; gap: 7px; }
+.pz-topstrip-in span, .pz-topstrip-help { display: inline-flex; align-items: center; gap: 7px; }
 .pz-topstrip-in svg { color: var(--amber); }
 .pz-topstrip-mid { color: #fff; }
+.pz-topstrip-help { color: #FFE7DC; font-weight: 700; transition: color .15s; }
+.pz-topstrip-help:hover { color: #fff; }
 
 .pz-mainbar { padding: 16px 0; border-bottom: 1px solid var(--line); }
 .pz-mainbar-in { display: flex; align-items: center; gap: 28px; }

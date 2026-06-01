@@ -104,9 +104,9 @@ const Header = () => {
     <header className="pz-header">
       <div className="pz-topstrip">
         <div className="wrap pz-topstrip-in">
-          <span><Icon name="truck" size={15} /> Same-day delivery in metro cities</span>
+          <span><Icon name="gift" size={15} /> Gifts as unique as the people you love</span>
           <span className="pz-topstrip-mid"><Icon name="sparkle" size={14} /> Free personalisation on every order</span>
-          <span><Icon name="phone" size={14} /> Help: 1800-PRINTZIN</span>
+          <a className="pz-topstrip-help" href="tel:+919145474834"><Icon name="phone" size={14} /> Help: +91 91454 74834</a>
         </div>
       </div>
 
@@ -182,7 +182,7 @@ const Footer = () => {
           </div>
           <div className="pz-footer-col">
             <h5>Company</h5>
-            <a href="#" onClick={e=>e.preventDefault()}>About Printzin</a>
+            <a href="#" onClick={(e)=>{e.preventDefault();nav('about');}}>About Printzin</a>
             <a href="#" onClick={e=>e.preventDefault()}>How printing works</a>
             <a href="#" onClick={e=>e.preventDefault()}>Bulk & corporate</a>
             <a href="#" onClick={e=>e.preventDefault()}>Careers</a>
@@ -192,12 +192,13 @@ const Footer = () => {
             <a href="#" onClick={e=>e.preventDefault()}>Track your order</a>
             <a href="#" onClick={e=>e.preventDefault()}>Delivery & returns</a>
             <a href="#" onClick={e=>e.preventDefault()}>FAQs</a>
-            <a href="#" onClick={e=>e.preventDefault()}>Contact us</a>
+            <a href="#" onClick={(e)=>{e.preventDefault();nav('contact');}}>Contact us</a>
           </div>
         </div>
         <div className="pz-footer-bottom">
           <span>© 2026 Printzin Gifting Solution. Made with <Icon name="heart" size={12} style={{fill:'var(--coral)',stroke:'var(--coral)'}}/> in India.</span>
           <span className="pz-footer-pay">Secure payments by <strong>Razorpay</strong> · UPI · Cards · Netbanking</span>
+          <a href="#" className="pz-footer-admin" onClick={(e)=>{e.preventDefault();nav('admin');}}>Admin</a>
         </div>
       </div>
     </footer>

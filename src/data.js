@@ -157,8 +157,9 @@
     P({ name: 'Packaging Bags', cat: 'office', price: 45, personalizable: false, blurb: 'Sturdy gift packaging bags for your purchases.' }),
   ];
 
-  function bySlug(id) { return PRODUCTS.find(p => p.id === id); }
-  function inCat(catId) { return PRODUCTS.filter(p => p.cat === catId); }
+  // Read from the LIVE array so Supabase-loaded products resolve correctly.
+  function bySlug(id) { return window.PZ_DATA.PRODUCTS.find(p => p.id === id); }
+  function inCat(catId) { return window.PZ_DATA.PRODUCTS.filter(p => p.cat === catId); }
 
   window.PZ_DATA = { CATEGORIES, COLORS, PRODUCTS, bySlug, inCat };
 })();
